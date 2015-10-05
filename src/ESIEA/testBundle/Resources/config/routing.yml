@@ -1,0 +1,6 @@
+esie_atest_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ESIEAtestBundle:Default:index }
+esie_atest_page2:
+    path:     /color/{color}
+    defaults: { _controller: ESIEAtestBundle:Color:index }

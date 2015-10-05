@@ -1,0 +1,3 @@
+esie_atest:
+    resource: "@ESIEAtestBundle/Resources/config/routing.yml"
+    prefix:   /
