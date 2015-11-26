@@ -1,4 +1,0 @@
-services:
-#    esie_atest.example:
-#        class: ESIEA\testBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]

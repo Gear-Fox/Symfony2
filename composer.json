@@ -1,5 +1,5 @@
 {
-    "name": "pyro/symfony2",
+    "name": "pyro/site",
     "license": "proprietary",
     "type": "project",
     "autoload": {
