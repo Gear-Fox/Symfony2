@@ -26,24 +26,17 @@ class PageController extends Controller{
 
 		// Le render ne change pas, on passait avant un tableau, maintenant un objet
 		return $this->render('BLOGTemplateBundle:Page:index.html.twig', array('base_all' => $base_all));
-<<<<<<< HEAD
-=======
-
-        //return $this->render('BLOGTemplateBundle:Page:index.html.twig');		
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
     }
 	
 	public function page_testAction(){		
         return $this->render('BLOGTemplateBundle:Page:page_test.html.twig');		
     }
 	
-<<<<<<< HEAD
+
 	public function dprintAction(){		
         return $this->render('BLOGTemplateBundle:Page:dprint.html.twig');		
     }
 	
-=======
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
 	public function aboutAction(){		
         return $this->render('BLOGTemplateBundle:Page:about.html.twig');		
     }
@@ -53,7 +46,6 @@ class PageController extends Controller{
     }
 	
 	public function addAction(Request $request){    
-<<<<<<< HEAD
 
 		$base = new Base();		
 		$base->setDate(new \Datetime());		
@@ -92,36 +84,7 @@ class PageController extends Controller{
 		return $this->render('BLOGTemplateBundle:Page:add.html.twig', array('form' => $form->createView(),));
 
 	}
-		
 	
-=======
-	    // Création de l'entité
-        $base = new Base();
-        $base->setTitle('trucRecherche développeur Symfony2.');
-		$base->setDate(new \Datetime('NOW'));
-        $base->setAuthor('totoAlexandre');
-        $base->setContent("Nous recherchons un développeur Symfony2 débutant sur Lyon. Blabla…");
-
-        // On peut ne pas définir ni la date ni la publication,
-        // car ces attributs sont définis automatiquement dans le constructeur
-        // On récupère l'EntityManager
-        $em = $this->getDoctrine()->getManager();
-
-        // Étape 1 : On « persiste » l'entité
-        $em->persist($base);
-
-        // Étape 2 : On « flush » tout ce qui a été persisté avant
-        $em->flush();
-
-        // Reste de la méthode qu'on avait déjà écrit
-        if ($request->isMethod('POST')) {
-          $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-          return $this->redirect($this->generateUrl('blog_template_view', array('id' => $base->getId())));
-        }
-
-        return $this->render('BLOGTemplateBundle:Page:add.html.twig');
-  }
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
 	
 	public function viewAction($id){
     
@@ -141,7 +104,7 @@ class PageController extends Controller{
     return $this->render('BLOGTemplateBundle:Page:view.html.twig', array('base' => $base));
 
   }
-<<<<<<< HEAD
+
   
   
   
@@ -197,7 +160,6 @@ public function editAction($id, Request $request){
     return $this->render('BLOGTemplateBundle:Page:delete.html.twig', array('base' => $base,'form'   => $form->createView() ));
 
   }
-=======
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
+
  
 }
