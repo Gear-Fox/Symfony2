@@ -108,50 +108,34 @@ class PageController extends Controller{
   
   
     public function editAction($id, Request $request){
-       
-	$em = $this->getDoctrine()->getManager();
+		   
+		$em = $this->getDoctrine()->getManager();
 
-    $advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
+		$advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
 
-    if (null === $base) {
-      throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
-    }
-	
-
-	// On ajoute les champs de l'entité que l'on veut à notre formulaire
-		$formBuilder
-		  ->add('date',      'date')
-		  ->add('title',     'text')
-		  ->add('content',   'textarea')
-		  ->add('author',    'text')
-		  ->add('published', 'checkbox')
-		  ->add('save',      'submit');
-	
-	$form = $formBuilder->getForm();
+		if (null === $base) {
+		  throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
+		}
 		
-		
-    // On fait le lien Requête <-> Formulaire
-    // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-    $form->handleRequest($request);
+		/*	$formBuilder
+			  ->add('date',      'date')
+			  ->add('title',     'text')
+			  ->add('content',   'textarea')
+			  ->add('author',    'text')
+			  ->add('published', 'checkbox')
+			  ->add('save',      'submit');	
+		$form = $formBuilder->getForm();
+		$form->handleRequest($request);
 
-    // On vérifie que les valeurs entrées sont correctes
-    // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-    if ($form->isValid()) {
-      // On l'enregistre notre objet $advert dans la base de données, par exemple
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($base);
-      $em->flush();
-
-      $request->getSession()->getFlashBag()->add('notice', 'Objet bien enregistrée.');
-
-      // On redirige vers la page de visualisation de l'annonce nouvellement créée
-      return $this->redirect($this->generateUrl('BLOGTemplateBundle:Page:view', array('id' => $base->getId())));
-    }
-
-    // À ce stade, le formulaire n'est pas valide car :
-    // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
-    // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
-    return $this->render('BLOGTemplateBundle:Page:edit.html.twig', array('form' => $form->createView(),));
+		if ($form->isValid()) {
+		  $em = $this->getDoctrine()->getManager();
+		  $em->persist($base);
+		  $em->flush();
+		  $request->getSession()->getFlashBag()->add('notice', 'Objet bien enregistrée.');
+		  return $this->redirect($this->generateUrl('BLOGTemplateBundle:Page:view', array('id' => $base->getId())));
+		}*/
+	 
+		return $this->render('BLOGTemplateBundle:Page:edit.html.twig', array('form' => $form->createView(),));
   }
   
   
