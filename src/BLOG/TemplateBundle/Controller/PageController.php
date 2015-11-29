@@ -214,9 +214,9 @@ class PageController extends Controller{
     $em = $this->getDoctrine()->getManager();
 
     // On récupère l'annonce $id
-    $advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
+    $base = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
 
-    if (null === $advert) {
+    if (null === $base) {
       throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
     }
 
