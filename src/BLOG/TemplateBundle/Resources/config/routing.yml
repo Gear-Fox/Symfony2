@@ -2,7 +2,6 @@ blog_template_homepage:
     path:     /index
     defaults: { _controller: BLOGTemplateBundle:Page:index }
 
-<<<<<<< HEAD
 blog_template_homepage2:
     path:     /
     defaults: { _controller: BLOGTemplateBundle:Page:index }
@@ -11,8 +10,6 @@ blog_template_dprint:
     path:     /dprint
     defaults: { _controller: BLOGTemplateBundle:Page:dprint }
 
-=======
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
 blog_template_about:
     path:     /about
     defaults: { _controller: BLOGTemplateBundle:Page:about }
@@ -31,7 +28,6 @@ blog_template_add:
 
 blog_template_view:
     path:     /view/{id}
-<<<<<<< HEAD
     defaults: { _controller: BLOGTemplateBundle:Page:view }
 
 blog_template_delete:
@@ -42,6 +38,3 @@ blog_template_delete:
 blog_template_edit:
     path:     /edit/{id}
     defaults: { _controller: BLOGTemplateBundle:Page:edit }
-=======
-    defaults: { _controller: BLOGTemplateBundle:Page:view }
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
