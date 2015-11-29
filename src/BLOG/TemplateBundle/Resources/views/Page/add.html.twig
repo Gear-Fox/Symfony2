@@ -27,16 +27,19 @@
       </div>
     </div>
 	
+  <br>
   {{ form_row(form.date) }}
+  <br>
   {{ form_row(form.author) }}
+  <br>
   {{ form_row(form.published) }}
   <br>
   {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
-  <br>
-  {{ form_rest(form) }}
-  
+
+  {{ form_rest(form) }}  
   {{ form_end(form) }}
 
 </div>
 </center>
+
 {% endblock %}	
