@@ -111,7 +111,7 @@ public function editAction($id, Request $request){
 
     $em = $this->getDoctrine()->getManager();
     // On récupère l'annonce $id
-    $advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
+    $base = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
 
 
     if (null === $base) {
@@ -119,15 +119,14 @@ public function editAction($id, Request $request){
     }
 
     $form = $this->createForm(new AdvertEditType(), $base);
+	
     if ($form->handleRequest($request)->isValid()) {
       $em->flush();
       $request->getSession()->getFlashBag()->add('notice', 'Objet bien modifiée.');
       return $this->redirect($this->generateUrl('blog_template_view', array('id' => $base->getId())));
 
     }
-    return $this->render('BLOGTemplateBundle:Base:edit.html.twig', array('form'   => $form->createView(),'base' => $base // Je passe également l'annonce à la vue si jamais elle veut l'afficher
-
-    ));
+    return $this->render('BLOGTemplateBundle:Base:edit.html.twig', array('form'   => $form->createView(),'base' => $base));
 
   }
   
