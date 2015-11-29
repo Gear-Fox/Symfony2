@@ -25,18 +25,19 @@
 	<h2>n°{{ base.id }} : {{ base.title }}</h2>		
 	<p>Publié par {{ base.author }}</p>
 	<br>
-	<center><div id="rendu"></div></center>
-	<br><br>
-	<div style="padding:20px; border:solid #D8D8D8 1px; background:#F2F2F2;">
-		<p>{{ base.content }}</p>	
-		<br>
-		<p>
-			<a class="btn btn-primary" href="view/{{ base.id }}" role="button">Telecharger</a> 
-			<a class="btn btn-primary" href="view/{{ base.id }}" role="button">Modifier</a> 
-			<a class="btn btn-danger" href="delete/{{ base.id }}" role="button">Suprimer</a>  
-		</p>		
-	</div>
-	
+	<center>
+		<div id="rendu"></div>
+		<br><br>
+		<div style="width: 60%; padding:20px; border:solid #D8D8D8 1px; background:#F2F2F2;">
+			<p>{{ base.content }}</p>	
+			<br>
+			<p>
+				<a class="btn btn-primary" href="view/{{ base.id }}" role="button">Telecharger</a> 
+				<a class="btn btn-primary" href="view/{{ base.id }}" role="button">Modifier</a> 
+				<a class="btn btn-danger" href="delete/{{ base.id }}" role="button">Suprimer</a>  
+			</p>		
+		</div>
+	</center>
 			
 		
 		
