@@ -1,8 +1,5 @@
 imports:
-<<<<<<< HEAD
     - { resource: parameters.yml } 
-=======
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
     - { resource: config.yml }
 
 framework:

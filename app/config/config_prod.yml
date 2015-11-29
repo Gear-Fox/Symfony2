@@ -1,8 +1,5 @@
 imports:
-<<<<<<< HEAD
     - { resource: parameters_production.php } 
-=======
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
     - { resource: config.yml }
 
 #framework:
@@ -25,11 +22,7 @@ monolog:
             handler:      nested
         nested:
             type:  stream
-<<<<<<< HEAD
             path:  "php://stderr"
-=======
-            path:  "%kernel.logs_dir%/%kernel.environment%.log"
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
             level: debug
         console:
             type:  console

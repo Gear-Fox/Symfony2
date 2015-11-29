@@ -1,9 +1,5 @@
 imports:
-<<<<<<< HEAD
     - { resource: parameters.php }
-=======
-    - { resource: parameters.yml }
->>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
     - { resource: security.yml }
     - { resource: services.yml }
 
