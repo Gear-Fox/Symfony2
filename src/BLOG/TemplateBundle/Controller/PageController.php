@@ -104,10 +104,10 @@ class PageController extends Controller{
 	*/
 	
 	// On crée un objet Advert
-    $advert = new Advert();
+    $base = new Base();
 
     // On crée le FormBuilder grâce au service form factory
-    $formBuilder = $this->get('form.factory')->createBuilder('form', $advert);
+    $formBuilder = $this->get('form.factory')->createBuilder('form', $base);
 
     // On ajoute les champs de l'entité que l'on veut à notre formulaire
     $formBuilder
