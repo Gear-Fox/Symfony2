@@ -47,7 +47,7 @@ class PageController extends Controller{
     }
 	
 	public function addAction(Request $request){    
-	    // Création de l'entité
+	  /*  // Création de l'entité
         $base = new Base();
         $base->setTitle('trucRecherche développeur Symfony2.');
 		$base->setDate(new \Datetime('NOW'));
@@ -72,7 +72,7 @@ class PageController extends Controller{
         }
 
         return $this->render('BLOGTemplateBundle:Page:add.html.twig');
-		
+		*/
 		
 		
 		/***************************
@@ -102,7 +102,7 @@ class PageController extends Controller{
 		// - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
 		return $this->render('BLOGTemplateBundle:Page:add.html.twig', array('form' => $form->createView(),));
 		*/
-		/*
+		
 		// On crée un objet Advert
 		$base = new Base();
 
@@ -126,7 +126,7 @@ class PageController extends Controller{
 		// On passe la méthode createView() du formulaire à la vue
 		// afin qu'elle puisse afficher le formulaire toute seule
 		return $this->render('BLOGTemplateBundle:Page:add.html.twig', array('form' => $form->createView(),));
-*/
+
 	  }
 		
 	
