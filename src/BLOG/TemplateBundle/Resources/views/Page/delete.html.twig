@@ -1,0 +1,30 @@
+{% extends 'BLOGTemplateBundle:Theme:template.html.twig' %}
+
+{% block title %}{{ parent() }}Supression{% endblock %}
+
+{% block body %}	
+
+
+  <h2>Supprimer un object</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer l'objet "{{ base.title }}" ?
+  </p>
+
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+
+  <form action="{{ path('oc_platform_delete', {'id': advert.id}) }}" method="post">
+    <a href="{{ path('oc_platform_view', {'id': advert.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à l'objet
+    </a>
+
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+
+    <input type="submit" value="Supprimer" class="btn btn-danger" />  
+    {{ form_rest(form) }}
+
+  </form>
+  
+{% endblock %}	

@@ -210,14 +210,13 @@ class PageController extends Controller{
 
   
   
-  public function deleteAction($id){
-  
+  public function deleteAction($id){  
 	
     $em = $this->getDoctrine()->getManager();  
     $advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
 
     if (null === $advert) {
-      throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+      throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
     }
 
 	$em->remove($advert);	

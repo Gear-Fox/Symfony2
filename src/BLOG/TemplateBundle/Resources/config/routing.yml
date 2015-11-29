@@ -29,3 +29,7 @@ blog_template_add:
 blog_template_view:
     path:     /view/{id}
     defaults: { _controller: BLOGTemplateBundle:Page:view }
+
+blog_template_delete:
+    path:     /delete/{id}
+    defaults: { _controller: BLOGTemplateBundle:Page:delete }
