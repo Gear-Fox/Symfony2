@@ -1,0 +1,91 @@
+<<<<<<< HEAD
+{% extends 'BLOGTemplateBundle:Theme:template.html.twig' %}
+
+{% block title %}{{ parent() }}Ajouter{% endblock %}
+
+{% block body %}	
+	
+<br><br><h3>Publier un objet :</h3><br> 
+
+
+<div class="well" style="margin: 0 auto; width:60%;">
+		
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}   
+    {{ form_errors(form) }}
+
+    <div class="form-group">      
+      {{ form_label(form.title, "Nom de l'objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}      
+      {{ form_errors(form.title) }}
+      <div class="col-sm-4">        
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+      </div>	  
+    </div>
+
+	<div class="form-group">
+      {{ form_label(form.author, "Auteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.title) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+	
+    <div class="form-group">
+      {{ form_label(form.content, "description de l'objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.title) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+	
+	<div class="form-group">
+      {{ form_label(form.date, "Date", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.title) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+	
+
+  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+  {{ form_rest(form) }}  
+  {{ form_end(form) }}
+
+ </div>
+
+
+{% endblock %}	
+=======
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>Bienvenue sur ma première page avec OpenClassrooms !</title>
+
+    </head>
+
+    <body>
+
+        <h1>Hello World !</h1>
+
+        
+
+        <p>
+
+            Le Hello World est un grand classique en programmation.
+
+            Il signifie énormément, car cela veut dire que vous avez
+
+            réussi à exécuter le programme pour accomplir une tâche simple :
+
+            afficher ce hello world !
+
+        </p>
+
+    </body>
+
+</html>
+>>>>>>> e018118032b7aced85cc291e0ba63f74affd730b
