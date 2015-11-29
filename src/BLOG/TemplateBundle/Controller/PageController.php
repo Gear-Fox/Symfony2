@@ -207,7 +207,6 @@ class PageController extends Controller{
     // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
     return $this->render('BLOGTemplateBundle:Page:edit.html.twig', array('form' => $form->createView(),));
   }
-
   
   
   public function deleteAction($id){  
@@ -215,11 +214,11 @@ class PageController extends Controller{
     $em = $this->getDoctrine()->getManager();  
     $advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
 
-    if (null === $advert) {
+    if (null === $base) {
       throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
     }
 
-	$em->remove($advert);	
+	$em->remove($base);	
 	
 	$em->flush();
     return $this->render('BLOGTemplateBundle:Page:delete.html.twig');
