@@ -1,1 +1,33 @@
-hello
+{% extends "BLOGTemplateBundle::theme\template.html.twig" %}
+
+{% block title %}{{ parent() }}Accueil{% endblock %}
+
+{% block body %}	
+		
+	<!-- Caroussel -->
+	{% include "BLOGTemplateBundle::theme/caroussel.html.twig" %}	
+	
+    <!-- Phrase d'accroche -->
+    <div class="jumbotron" style="margin-bottom:-40px">
+      <h1>My 3D Collection</h1>
+      <p class="lead">Votre bibliotheque en ligne de fichier 3D !<a class="btn btn-lg btn-success" style="margin-left: 30px;" href="#" role="button">Inscription</a></p>
+    </div>
+
+    <!-- Article -->		
+	<div class="row">  			
+		{% for base in base_all %}
+			{% if base.published == true %}
+			
+			<div class="col-lg-6" style="margin-bottom:20px;">
+			<h2>n°{{ base.id }} {{ base.title }}</h2>	
+			<p>Publié par {{ base.author }}</p>
+			<p>{{ base.content }}</p>	
+			<p><a class="btn btn-primary" href="view/{{ base.id }}" role="button">Visualiser le fichier &raquo;</a></p>
+			</div>
+			
+			{% endif %}
+		{% endfor %}	
+	</div>	
+
+{% endblock %}	  
+	
