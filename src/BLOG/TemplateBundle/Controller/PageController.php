@@ -209,19 +209,29 @@ class PageController extends Controller{
   }
   
   
-  public function deleteAction($id){  
-	
-    $em = $this->getDoctrine()->getManager();  
+  public function deleteAction($id, Request $request){
+
+    $em = $this->getDoctrine()->getManager();
+
+    // On récupère l'annonce $id
     $advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
 
-    if (null === $base) {
+    if (null === $advert) {
       throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
     }
 
-	$em->remove($base);	
-	
-	$em->flush();
-    return $this->render('BLOGTemplateBundle:Page:delete.html.twig', array('base' => $base));
+    $form = $this->createFormBuilder()->getForm();
+
+    if ($form->handleRequest($request)->isValid()) {
+      $em->remove($base);
+      $em->flush();
+      $request->getSession()->getFlashBag()->add('info', "L'objet a bien été supprimée.");
+      return $this->redirect($this->generateUrl('blog_template_homepage'));
+    }
+
+    // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
+    return $this->render('OCPlatformBundle:Advert:delete.html.twig', array('base' => $base,'form'   => $form->createView() ));
+
   }
  
 }
