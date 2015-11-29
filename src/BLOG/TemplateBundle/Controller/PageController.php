@@ -107,7 +107,7 @@ class PageController extends Controller{
 		$base = new Base();
 
 		// On crée le FormBuilder grâce au service form factory
-		$formBuilder = $this->get('Theme:form.factory')->createBuilder('form', $base);
+		$formBuilder = $this->get('form.factory')->createBuilder('form', $base);
 
 		// On ajoute les champs de l'entité que l'on veut à notre formulaire
 		$formBuilder
