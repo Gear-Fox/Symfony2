@@ -17,6 +17,6 @@ $container->setParameter('mailer_password', null);
 
 // Other settings
 $container->setParameter('locale', 'en');
-$container->setParameter('secret', 'your_secret');
+$container->setParameter('secret', '64a56327735b1f77def81919a36230c1d96c07d0');
 
 ?>
