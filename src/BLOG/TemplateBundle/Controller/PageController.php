@@ -230,7 +230,7 @@ class PageController extends Controller{
     }
 
     // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
-    return $this->render('OCPlatformBundle:Advert:delete.html.twig', array('base' => $base,'form'   => $form->createView() ));
+    return $this->render('BLOGTemplateBundle:Page:delete.html.twig', array('base' => $base,'form'   => $form->createView() ));
 
   }
  
