@@ -221,7 +221,7 @@ class PageController extends Controller{
 	$em->remove($base);	
 	
 	$em->flush();
-    return $this->render('BLOGTemplateBundle:Page:delete.html.twig');
+    return $this->render('BLOGTemplateBundle:Page:delete.html.twig', array('base' => $base));
   }
  
 }
