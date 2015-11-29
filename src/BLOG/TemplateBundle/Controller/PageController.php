@@ -73,6 +73,9 @@ class PageController extends Controller{
 
         return $this->render('BLOGTemplateBundle:Page:add.html.twig');*/
 		
+		
+		
+		/***************************
 		$base = new Base();
 		$form = $this->get('form.factory')->create(new BaseType, $base);
 
@@ -98,7 +101,33 @@ class PageController extends Controller{
 		// - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
 		// - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
 		return $this->render('BLOGTemplateBundle:Page:add.html.twig', array('form' => $form->createView(),));
+	*/
 	
+	// On crée un objet Advert
+    $advert = new Advert();
+
+    // On crée le FormBuilder grâce au service form factory
+    $formBuilder = $this->get('form.factory')->createBuilder('form', $advert);
+
+    // On ajoute les champs de l'entité que l'on veut à notre formulaire
+    $formBuilder
+      ->add('date',      'date')
+      ->add('title',     'text')
+      ->add('content',   'textarea')
+      ->add('author',    'text')
+      ->add('published', 'checkbox')
+      ->add('save',      'submit');
+
+    // Pour l'instant, pas de candidatures, catégories, etc., on les gérera plus tard
+    // À partir du formBuilder, on génère le formulaire
+    $form = $formBuilder->getForm();
+
+
+    // On passe la méthode createView() du formulaire à la vue
+    // afin qu'elle puisse afficher le formulaire toute seule
+    return $this->render('OCPlatformBundle:Advert:add.html.twig', array('form' => $form->createView(),));
+
+  }
     }
 	
 	
