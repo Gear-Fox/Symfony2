@@ -74,8 +74,7 @@ class PageController extends Controller{
         return $this->render('BLOGTemplateBundle:Page:add.html.twig');*/
 		
 		$base = new Base();
-
-		$form = $this->get('form.factory')->create(new AdvertType, $base);
+		$form = $this->get('form.factory')->create(new BaseType, $base);
 
 		// On fait le lien Requête <-> Formulaire
 		// À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
