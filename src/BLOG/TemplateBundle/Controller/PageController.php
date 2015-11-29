@@ -107,35 +107,28 @@ class PageController extends Controller{
   
   
   
-    public function editAction($id, Request $request){
-		   
-		$em = $this->getDoctrine()->getManager();
+public function editAction($id, Request $request){
 
-		$advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
+    $em = $this->getDoctrine()->getManager();
+    // On récupère l'annonce $id
+    $advert = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
 
-		if (null === $base) {
-		  throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
-		}
-		
-		/*	$formBuilder
-			  ->add('date',      'date')
-			  ->add('title',     'text')
-			  ->add('content',   'textarea')
-			  ->add('author',    'text')
-			  ->add('published', 'checkbox')
-			  ->add('save',      'submit');	
-		$form = $formBuilder->getForm();
-		$form->handleRequest($request);
 
-		if ($form->isValid()) {
-		  $em = $this->getDoctrine()->getManager();
-		  $em->persist($base);
-		  $em->flush();
-		  $request->getSession()->getFlashBag()->add('notice', 'Objet bien enregistrée.');
-		  return $this->redirect($this->generateUrl('BLOGTemplateBundle:Page:view', array('id' => $base->getId())));
-		}*/
-	 
-		return $this->render('BLOGTemplateBundle:Page:edit.html.twig', array('base' => $base,'form'   => $form->createView() ));
+    if (null === $base) {
+      throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
+    }
+
+    $form = $this->createForm(new AdvertEditType(), $base);
+    if ($form->handleRequest($request)->isValid()) {
+      $em->flush();
+      $request->getSession()->getFlashBag()->add('notice', 'Objet bien modifiée.');
+      return $this->redirect($this->generateUrl('blog_template_view', array('id' => $base->getId())));
+
+    }
+    return $this->render('BLOGTemplateBundle:Base:edit.html.twig', array('form'   => $form->createView(),'base' => $base // Je passe également l'annonce à la vue si jamais elle veut l'afficher
+
+    ));
+
   }
   
   
