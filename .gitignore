@@ -9,3 +9,8 @@
 /composer.phar
 /vendor/
 /web/bundles/
+/.gitignore
+/.gitattributes
+/app/cache/*
+/app/logs/*
+/vendor/*
