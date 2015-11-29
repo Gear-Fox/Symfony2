@@ -135,7 +135,7 @@ class PageController extends Controller{
 		  return $this->redirect($this->generateUrl('BLOGTemplateBundle:Page:view', array('id' => $base->getId())));
 		}*/
 	 
-		return $this->render('BLOGTemplateBundle:Page:edit.html.twig', array('form' => $form->createView(),));
+		return $this->render('BLOGTemplateBundle:Page:edit.html.twig', array('base' => $base,'form'   => $form->createView() ));
   }
   
   
