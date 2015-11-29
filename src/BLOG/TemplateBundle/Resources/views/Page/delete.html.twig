@@ -4,12 +4,25 @@
 
 {% block body %}	
 
-
+  <br>
   <h2>Supprimer un object</h2>
 
   <p>
     Etes-vous certain de vouloir supprimer l'objet "{{ base.title }}" ?
   </p>
 
+ 
+
+  <form action="{{ path('blog_template_delete', {'id': base.id}) }}" method="post">
+
+    <a href="{{ path('blog_template_view', {'id': base.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour
+    </a>
+   
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {{ form_rest(form) }}
+
+  </form>
   
 {% endblock %}	
