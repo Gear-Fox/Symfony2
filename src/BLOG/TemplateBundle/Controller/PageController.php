@@ -120,9 +120,15 @@ class PageController extends Controller{
 		  ->add('published', 'checkbox')
 		  ->add('save',      'submit');
 
+		  
+		$form = $formBuilder->getForm();
+		
+		
 	    // On fait le lien Requête <-> Formulaire
 		// À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-		$form->handleRequest($request);
+		//$form->handleRequest($request);
+		
+		
 		// On vérifie que les valeurs entrées sont correctes
 		// (Nous verrons la validation des objets en détail dans le prochain chapitre)
 
