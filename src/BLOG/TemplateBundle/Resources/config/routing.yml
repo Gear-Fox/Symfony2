@@ -33,3 +33,8 @@ blog_template_view:
 blog_template_delete:
     path:     /delete/{id}
     defaults: { _controller: BLOGTemplateBundle:Page:delete }
+
+
+blog_template_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BLOGTemplateBundle:Page:edit }
