@@ -4,8 +4,7 @@
 
 {% block body %}	
 	
-<br><br> 
-<h3>Publier un objet :</h3>
+<br><br><h3>Publier un objet :</h3><br> 
 
 <div class="well">
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}   
@@ -30,9 +29,9 @@
   {{ form_row(form.date) }}
   {{ form_row(form.author) }}
   {{ form_row(form.published) }}
- 
+  <br>
   {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
-  
+  <br>
   {{ form_rest(form) }}
   
   {{ form_end(form) }}
