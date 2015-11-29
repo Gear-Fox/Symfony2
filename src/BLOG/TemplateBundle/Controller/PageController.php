@@ -118,7 +118,18 @@ public function editAction($id, Request $request){
       throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
     }
 
-    $form = $this->createForm(new AdvertEditType(), $base);
+	
+	$formBuilder = $this->get('form.factory')->createBuilder('form', $base);	
+		$formBuilder
+		  ->add('date',      'date')
+		  ->add('title',     'text')
+		  ->add('content',   'textarea')
+		  ->add('author',    'text')
+		  ->add('published', 'checkbox')
+		  ->add('save',      'submit');		  
+		$form = $formBuilder->getForm();
+		
+    //$form = $this->createForm(new AdvertEditType(), $base);
 	
     if ($form->handleRequest($request)->isValid()) {
       $em->flush();
