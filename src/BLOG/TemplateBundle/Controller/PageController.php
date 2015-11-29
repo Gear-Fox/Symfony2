@@ -132,7 +132,7 @@ class PageController extends Controller{
 		// On vérifie que les valeurs entrées sont correctes
 		// (Nous verrons la validation des objets en détail dans le prochain chapitre)
 
-		/*if ($form->isValid()) {
+		if ($form->isValid()) {
 		  // On l'enregistre notre objet $advert dans la base de données, par exemple
 		  $em = $this->getDoctrine()->getManager();
 		  $em->persist($base);
@@ -142,7 +142,7 @@ class PageController extends Controller{
 		  // On redirige vers la page de visualisation de l'annonce nouvellement créée
 		  return $this->redirect($this->generateUrl('blog_template_view', array('id' => $base->getId())));
 		}
-		*/
+		
 		// On passe la méthode createView() du formulaire à la vue
 		// afin qu'elle puisse afficher le formulaire toute seule
 		return $this->render('BLOGTemplateBundle:Page:add.html.twig', array('form' => $form->createView(),));
