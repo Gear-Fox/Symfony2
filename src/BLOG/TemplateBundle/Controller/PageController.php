@@ -11,20 +11,14 @@ use BLOG\TemplateBundle\Entity\Base;
 class PageController extends Controller{
 	
     public function indexAction(){	
-
-		// On récupère le repository
+		
 		$repository = $this->getDoctrine()->getManager()->getRepository('BLOGTemplateBundle:Base');
-
-		// On récupère l'entité correspondante à l'id $id
 		$base_all = $repository->findAll();
 
-		// $advert est donc une instance de OC\PlatformBundle\Entity\Advert
-		// ou null si l'id $id  n'existe pas, d'où ce if :
 		if (null === $base_all) {
 			throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
 		}
 
-		// Le render ne change pas, on passait avant un tableau, maintenant un objet
 		return $this->render('BLOGTemplateBundle:Page:index.html.twig', array('base_all' => $base_all));
     }
 	
@@ -58,108 +52,80 @@ class PageController extends Controller{
 		  ->add('author',    'text')
 		  ->add('published', 'checkbox')
 		  ->add('save',      'submit');		  
-		$form = $formBuilder->getForm();
-				
-	    // On fait le lien Requête <-> Formulaire
-		// À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+		$form = $formBuilder->getForm();				
+	   
 		$form->handleRequest($request);
-		
-		
-		// On vérifie que les valeurs entrées sont correctes
-		// (Nous verrons la validation des objets en détail dans le prochain chapitre)
-
-		if ($form->isValid()) {
-		  // On l'enregistre notre objet $advert dans la base de données, par exemple
+				
+	    if ($form->isValid()) {		 
 		  $em = $this->getDoctrine()->getManager();
 		  $em->persist($base);
 		  $em->flush();
 
-		  $request->getSession()->getFlashBag()->add('notice', 'Article bien enregistré.');
-		  // On redirige vers la page de visualisation de l'annonce nouvellement créée
+		  $request->getSession()->getFlashBag()->add('notice', 'Article bien enregistré.');		 
 		  return $this->redirect($this->generateUrl('blog_template_view', array('id' => $base->getId())));
-		}
+		}	
 		
-		// On passe la méthode createView() du formulaire à la vue
-		// afin qu'elle puisse afficher le formulaire toute seule
 		return $this->render('BLOGTemplateBundle:Page:add.html.twig', array('form' => $form->createView(),));
-
 	}
+	
 	
 	
 	public function viewAction($id){
     
-    // On récupère le repository
-    $repository = $this->getDoctrine()->getManager()->getRepository('BLOGTemplateBundle:Base');
+		$repository = $this->getDoctrine()->getManager()->getRepository('BLOGTemplateBundle:Base');
+		$base = $repository->find($id);
 
-    // On récupère l'entité correspondante à l'id $id
-    $base = $repository->find($id);
-
-    // $advert est donc une instance de OC\PlatformBundle\Entity\Advert
-    // ou null si l'id $id  n'existe pas, d'où ce if :
-    if (null === $base) {
-        throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
-    }
-
-    // Le render ne change pas, on passait avant un tableau, maintenant un objet
-    return $this->render('BLOGTemplateBundle:Page:view.html.twig', array('base' => $base));
-
-  }
-
-  
-  
-  
-public function editAction($id, Request $request){
-
-    $em = $this->getDoctrine()->getManager();
-    // On récupère l'annonce $id
-    $base = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
-
-
-    if (null === $base) {
-      throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
-    }
-
-	
+		if (null === $base) {
+			throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+		}
 		
-    $form = $this->createForm(new BaseEditType(), $base);
-	
-    if ($form->handleRequest($request)->isValid()) {
-      $em->flush();
-      $request->getSession()->getFlashBag()->add('notice', 'Objet bien modifiée.');
-      return $this->redirect($this->generateUrl('blog_template_view', array('id' => $base->getId())));
+		return $this->render('BLOGTemplateBundle:Page:view.html.twig', array('base' => $base));
+    }
+ 
+  
+	  
+	public function editAction($id, Request $request){
+
+		$em = $this->getDoctrine()->getManager();		
+		$base = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
+
+		if (null === $base) {
+		  throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
+		}	
+			
+		$form = $this->createForm(new BaseEditType(), $base);
+		
+		if ($form->handleRequest($request)->isValid()) {
+		  $em->flush();
+		  $request->getSession()->getFlashBag()->add('notice', 'Objet bien modifiée.');
+		  return $this->redirect($this->generateUrl('blog_template_view', array('id' => $base->getId())));
+
+		}
+		return $this->render('BLOGTemplateBundle:Base:edit.html.twig', array('form'   => $form->createView(),'base' => $base));
+    }
+   
+  
+  
+    public function deleteAction($id, Request $request){
+
+		$em = $this->getDoctrine()->getManager();
+		$base = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
+
+		if (null === $base) {
+		  throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
+		}
+
+		$form = $this->createFormBuilder()->getForm();
+
+		if ($form->handleRequest($request)->isValid()) {
+		  $em->remove($base);
+		  $em->flush();
+		  $request->getSession()->getFlashBag()->add('info', "L'objet a bien été supprimée.");
+		  return $this->redirect($this->generateUrl('blog_template_homepage'));
+		}
+		return $this->render('BLOGTemplateBundle:Page:delete.html.twig', array('base' => $base,'form'   => $form->createView() ));
 
     }
-    return $this->render('BLOGTemplateBundle:Base:edit.html.twig', array('form'   => $form->createView(),'base' => $base));
-
-  }
-  
-  
-  
-  
-  public function deleteAction($id, Request $request){
-
-    $em = $this->getDoctrine()->getManager();
-
-    // On récupère l'annonce $id
-    $base = $em->getRepository('BLOGTemplateBundle:Base')->find($id);
-
-    if (null === $base) {
-      throw new NotFoundHttpException("L'objet d'id ".$id." n'existe pas.");
-    }
-
-    $form = $this->createFormBuilder()->getForm();
-
-    if ($form->handleRequest($request)->isValid()) {
-      $em->remove($base);
-      $em->flush();
-      $request->getSession()->getFlashBag()->add('info', "L'objet a bien été supprimée.");
-      return $this->redirect($this->generateUrl('blog_template_homepage'));
-    }
-
-    // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
-    return $this->render('BLOGTemplateBundle:Page:delete.html.twig', array('base' => $base,'form'   => $form->createView() ));
-
-  }
 
  
 }

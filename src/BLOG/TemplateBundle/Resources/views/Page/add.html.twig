@@ -3,54 +3,53 @@
 {% block title %}{{ parent() }}Ajouter{% endblock %}
 
 {% block body %}	
-	
-<br><br><h3>Publier un objet :</h3><br> 
-
-
-<div class="well" style="margin: 0 auto; width:60%;">
 		
-    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}   
-    {{ form_errors(form) }}
+	<br><br><h3>Publier un objet :</h3><br> 
 
-    <div class="form-group">      
-      {{ form_label(form.title, "Nom de l'objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}      
-      {{ form_errors(form.title) }}
-      <div class="col-sm-4">        
-        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
-      </div>	  
-    </div>
+	<div class="well" style="margin: 0 auto; width:60%;">
+			
+		{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}   
+		{{ form_errors(form) }}
 
-	<div class="form-group">
-      {{ form_label(form.author, "Auteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-      {{ form_errors(form.title) }}
-      <div class="col-sm-4">
-        {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
-      </div>
-    </div>
-	
-    <div class="form-group">
-      {{ form_label(form.content, "description de l'objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-      {{ form_errors(form.title) }}
-      <div class="col-sm-4">
-        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
-      </div>
-    </div>
-	
-	<div class="form-group">
-      {{ form_label(form.date, "Date", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-      {{ form_errors(form.title) }}
-      <div class="col-sm-4">
-        {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
-      </div>
-    </div>
-	
+		<div class="form-group">      
+		  {{ form_label(form.title, "Nom de l'objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}      
+		  {{ form_errors(form.title) }}
+		  <div class="col-sm-4">        
+			{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+		  </div>	  
+		</div>
 
-  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+		<div class="form-group">
+		  {{ form_label(form.author, "Auteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+		  {{ form_errors(form.title) }}
+		  <div class="col-sm-4">
+			{{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+		  </div>
+		</div>
+		
+		<div class="form-group">
+		  {{ form_label(form.content, "description de l'objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+		  {{ form_errors(form.title) }}
+		  <div class="col-sm-4">
+			{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+		  </div>
+		</div>
+		
+		<div class="form-group">
+		  {{ form_label(form.date, "Date", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+		  {{ form_errors(form.title) }}
+		  <div class="col-sm-4">
+			{{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+		  </div>
+		</div>
+		
 
-  {{ form_rest(form) }}  
-  {{ form_end(form) }}
+		{{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
 
- </div>
+		{{ form_rest(form) }}  
+		{{ form_end(form) }}
+
+	 </div>
 
 
 {% endblock %}	

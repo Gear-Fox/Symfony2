@@ -18,10 +18,6 @@ blog_template_contact:
     path:     /contact
     defaults: { _controller: BLOGTemplateBundle:Page:contact }
 
-blog_template_test:
-    path:     /page_test
-    defaults: { _controller: BLOGTemplateBundle:Page:page_test }
-
 blog_template_add:
     path:     /add
     defaults: { _controller: BLOGTemplateBundle:Page:add }
