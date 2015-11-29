@@ -7,9 +7,8 @@
 <br><br><h3>Publier un objet :</h3><br> 
 
 
-<div class="well">
-	<center>
-	
+<div class="well" style="margin: 0 auto;">
+		
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}   
     {{ form_errors(form) }}
 
@@ -29,8 +28,16 @@
       </div>
     </div>
 	
-  <br>
-  {{ form_row(form.date) }}
+	<div class="form-group">
+      {{ form_label(form.date, "description de l'objet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.title) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+	
+	
+ 
   <br>
   {{ form_row(form.author) }}
   <br>
@@ -41,8 +48,7 @@
   {{ form_rest(form) }}  
   {{ form_end(form) }}
 
-  </center>
-</div>
+ </div>
 
 
 {% endblock %}	
