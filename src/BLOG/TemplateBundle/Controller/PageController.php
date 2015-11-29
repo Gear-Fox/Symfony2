@@ -119,17 +119,8 @@ public function editAction($id, Request $request){
     }
 
 	
-	$formBuilder = $this->get('form.factory')->createBuilder('form', $base);	
-		$formBuilder
-		  ->add('date',      'date')
-		  ->add('title',     'text')
-		  ->add('content',   'textarea')
-		  ->add('author',    'text')
-		  ->add('published', 'checkbox')
-		  ->add('save',      'submit');		  
-		$form = $formBuilder->getForm();
 		
-    //$form = $this->createForm(new AdvertEditType(), $base);
+    $form = $this->createForm(new BaseEditType(), $base);
 	
     if ($form->handleRequest($request)->isValid()) {
       $em->flush();
